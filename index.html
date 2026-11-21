@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131c">
+  <title>MX3 · Permit2 settlement</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="MX3 home"><span class="brand-mark">M</span><span>mx3</span></a>
+      <div class="wallet-actions"><span id="walletLabel" class="wallet-label">Wallet disconnected</span><button id="connectButton" class="button secondary">Connect wallet</button></div>
+    </header>
+
+    <section class="intro"><div class="eyebrow">PERMIT2 · CLIENT RUNTIME</div><h1>Settle assets.<br><span>One signature at a time.</span></h1><p>Approve Permit2, sign a scoped transfer, and settle through the MX3 router.</p></section>
+
+    <section class="panel" aria-label="Permit2 settlement form">
+      <div class="panel-heading"><div><div class="eyebrow">TRANSFER</div><h2>Asset route</h2></div><span class="network-pill"><i></i><span id="networkLabel">Choose network</span></span></div>
+      <div class="field"><label for="chainSelect">Network</label><select id="chainSelect"></select></div>
+      <div class="field"><label for="routerInput">MX3 router address</label><input id="routerInput" spellcheck="false" placeholder="0x… (deployed Permit2SettlementRouter)"></div>
+      <div class="field"><label for="tokenInput">Token address</label><input id="tokenInput" spellcheck="false" placeholder="0x… ERC-20 token"></div>
+      <div class="field"><label for="recipientInput">Recipient address</label><input id="recipientInput" spellcheck="false" placeholder="0x… recipient of settled tokens"></div>
+      <div class="form-row"><div class="field"><label for="amountInput">Amount</label><input id="amountInput" inputmode="decimal" placeholder="0.0" value="1"></div><div class="field"><label for="decimalsInput">Token decimals</label><input id="decimalsInput" inputmode="numeric" value="18"></div></div>
+      <button id="settleButton" class="button primary" disabled>Connect wallet to continue</button>
+      <p id="status" class="status" role="status" aria-live="polite">Connect a wallet, then configure the deployed router and token.</p>
+      <div id="txPanel" class="tx-panel" hidden><span>Transaction</span><a id="txLink" target="_blank" rel="noreferrer"></a></div>
+      <p class="fineprint">The signature authorizes this router to transfer up to the entered amount before expiry. The router forwards tokens to the selected recipient. This runtime executes a single-chain ERC-20 settlement; cross-chain delivery requires a bridge adapter.</p>
+    </section>
+    <footer>MX3 client runtime · Permit2 SignatureTransfer</footer>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
